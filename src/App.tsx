@@ -47,6 +47,7 @@ import './theme/variables.css';
 import PokemonList from './pages/PokemonsList';
 import PokemonDetails from './pages/PokemonDetails';
 import MoviesList from './pages/MoviesList';
+import MovieDetails from './pages/MovieDetails';
 
 setupIonicReact();
 
@@ -70,6 +71,7 @@ const App: React.FC = () => (
           <Route path="/pokemon-list" component={PokemonList} />
           <Route path="/pokemon/:id" component={PokemonDetails} />
           <Route path="/movies" component={MoviesList} />
+          <Route path="/movies/:id" component={MovieDetails} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
