@@ -106,7 +106,7 @@ const PokemonDetails: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Détails de {pokemon.name.fr}</IonTitle>
+          <IonTitle style ={{color:'pink' , textAlign:'center',fontWeight:'bold'}}>Détails de {pokemon.name.fr}</IonTitle>
           <IonButtons slot="start">
             <IonButton onClick={() => history.goBack()}>Retour à la liste</IonButton>
           </IonButtons>
@@ -114,14 +114,30 @@ const PokemonDetails: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonCard>
-          <img src={pokemon.sprites.regular} alt={pokemon.name.fr} />
+          <img style={{
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: '300px',         // Limite la largeur maximale de l'image
+  }}  src={pokemon.sprites.regular} alt={pokemon.name.fr} />
           <IonCardHeader>
-            <IonCardTitle>{pokemon.name.fr}</IonCardTitle>
+            <IonCardTitle  style={{
+    color: 'red',               // Couleur du texte
+    fontSize: '1.5rem',         // Taille de la police
+    fontWeight: 'bold',         // Poids de la police
+    fontStyle: 'italic',        // Style de la police
+    textAlign: 'center',        // Alignement du texte
+    margin: '10px',             // Marge autour du titre
+    padding: '5px',             // Espace entre le texte et la bordure
+    border: '2px solid black',  // Cadre noir autour du titre
+    borderRadius: '4px',        // Coins arrondis pour le titre
+    backgroundColor: 'white'    // Couleur de fond du titre (contraste avec le cadre)
+  }}>{pokemon.name.fr}</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <p><strong>Types:</strong> {pokemon.types?.map(type => type.name).join(', ')}</p>
-            <p><strong>Taille:</strong> {pokemon.height}</p>
-            <p><strong>Poids:</strong> {pokemon.weight}</p>
+            <p><strong style={{color: 'magenta'}}>Types:</strong> {pokemon.types?.map(type => type.name).join(', ')}</p>
+            <p><strong style={{color: 'magenta'}}>Taille:</strong> {pokemon.height}</p>
+            <p><strong style={{color: 'magenta'}}>Poids:</strong> {pokemon.weight}</p>
             {pokemon.evolution && (
               <div>
                 <p><strong>Évolution précédente:</strong> {pokemon.evolution.pre?.map(evo => evo.name).join(', ') || 'Aucune'}</p>

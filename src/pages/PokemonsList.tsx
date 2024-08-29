@@ -156,8 +156,8 @@ const PokemonList: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol size="12">
-              <IonItem>
-                <IonLabel>Choisissez un type:</IonLabel>
+              <IonItem style={{color: 'navy',fontWeight:'bold'}}>
+                <IonLabel >Choisissez un type:</IonLabel>
                 <IonSelect
                   value={selectedType}
                   placeholder="Sélectionner un type"
@@ -165,7 +165,7 @@ const PokemonList: React.FC = () => {
                 >
                   <IonSelectOption value="">Tous les Types</IonSelectOption>
                   {types.map((type, index) => (
-                    <IonSelectOption key={index} value={type}>
+                    <IonSelectOption  key={index} value={type}>
                       {type}
                     </IonSelectOption>
                   ))}

@@ -48,25 +48,52 @@ const MovieDetails: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Détails du Film</IonTitle>
+          <IonTitle style ={{color:'navy' , textAlign:'center',fontWeight:'bold'}}>Détails du Film</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonCard>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
+        <img 
+  style={{
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: '400px',         // Limite la largeur maximale de l'image
+  }} 
+  src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} 
+  alt={movie.title} 
+/>
           <IonCardHeader>
-            <IonCardTitle>{movie.title}</IonCardTitle>
+          <IonCardTitle
+  style={{
+    color: 'red',               // Couleur du texte
+    fontSize: '1.5rem',         // Taille de la police
+    fontWeight: 'bold',         // Poids de la police
+    fontStyle: 'italic',        // Style de la police
+    textAlign: 'center',        // Alignement du texte
+    margin: '10px',             // Marge autour du titre
+    padding: '5px',             // Espace entre le texte et la bordure
+    border: '2px solid black',  // Cadre noir autour du titre
+    borderRadius: '4px',        // Coins arrondis pour le titre
+    backgroundColor: 'white'    // Couleur de fond du titre (contraste avec le cadre)
+  }}
+>
+  {movie.title}
+</IonCardTitle>
+
+
+
           </IonCardHeader>
-          <IonCardContent>
-            <p><strong>Date de sortie:</strong> {movie.release_date}</p>
-            <p><strong>Synopsis:</strong> {movie.overview}</p>
-            <p><strong>Durée:</strong> N/A</p>
-            <p><strong>Genres:</strong> {movie.genre_ids}</p>
-            <p><strong>Titre original:</strong> {movie.original_title}</p>
-            <p><strong>Langue originale:</strong> {movie.original_language}</p>
-            <p><strong>Popularité:</strong> {movie.popularity}</p>
-            <p><strong>Note:</strong> {movie.vote_average} ({movie.vote_count} votes)</p>
-            <p><strong>Vidéo:</strong> {movie.video ? 'Oui' : 'Non'}</p>
+          <IonCardContent >
+            <p><strong style={{color: 'navy'}}>Date de sortie:</strong> {movie.release_date}</p>
+            <p><strong style={{color: 'navy'}}>Synopsis:</strong> {movie.overview}</p>
+            <p><strong style={{color: 'navy'}}>Durée:</strong> N/A</p>
+            <p><strong style={{color: 'navy'}}>Genres:</strong> {movie.genre_ids}</p>
+            <p><strong style={{color: 'navy'}}>Titre original:</strong> {movie.original_title}</p>
+            <p><strong style={{color: 'navy'}}>Langue originale:</strong> {movie.original_language}</p>
+            <p><strong style={{color: 'navy'}}>Popularité:</strong> {movie.popularity}</p>
+            <p><strong style={{color: 'navy'}}>Note:</strong> {movie.vote_average} ({movie.vote_count} votes)</p>
+            <p><strong style={{color: 'navy'}}>Vidéo:</strong> {movie.video ? 'Oui' : 'Non'}</p>
           </IonCardContent>
         </IonCard>
         <IonButton routerLink="/movies" expand="full">Retour à la liste des films</IonButton>

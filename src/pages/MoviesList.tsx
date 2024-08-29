@@ -81,7 +81,7 @@ const MoviesList: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Liste des Films</IonTitle>
+          <IonTitle style ={{color:'red' , textAlign:'center',fontWeight:'bold'}}>Liste des Films</IonTitle>
           <IonSearchbar
             value={query}
             onIonInput={handleSearch}
