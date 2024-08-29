@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonChip, IonLabel } from '@ionic/react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 interface Pokemon {
     pokedex_id: number;
@@ -75,17 +76,20 @@ interface Pokemon {
 
 const PokemonList: React.FC = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-
+  const history = useHistory();
   useEffect(() => {
     axios.get('https://tyradex.vercel.app/api/v1/pokemon')
       .then(response => {
+        
         setPokemons(response.data);
       })
       .catch(error => {
         console.error("Erreur lors de la récupération des données", error);
       });
   }, []);
-
+  const handlePokemonClick = (id: number) => {
+    history.push(`/pokemon/${id}`);
+  };
   return (
     <IonPage>
       <IonHeader>
@@ -98,14 +102,14 @@ const PokemonList: React.FC = () => {
           <IonRow>
             {pokemons.map(pokemon => (
               <IonCol size="6" key={pokemon.pokedex_id}>
-                <IonCard>
+                <IonCard button onClick={() => handlePokemonClick(pokemon.pokedex_id)}>
                   <img src={pokemon.sprites.regular} alt={pokemon.name.fr} />
                   <IonCardHeader>
                     <IonCardTitle>{pokemon.name.fr}</IonCardTitle>
                   </IonCardHeader>
                   <IonCardContent>
                     <p>Types:</p>
-                    {pokemon.types && pokemon.types.map((type, index) => (
+                    {pokemon.types?.map((type, index) => (
                       <IonChip key={index}>
                         <IonLabel>{type.name}</IonLabel>
                       </IonChip>

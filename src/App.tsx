@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, fileTray, square, triangle } from 'ionicons/icons';
+import { ellipse, fileTray, fileTrayStackedSharp, filmOutline, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
@@ -45,6 +45,8 @@ import '@ionic/react/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 import PokemonList from './pages/PokemonsList';
+import PokemonDetails from './pages/PokemonDetails';
+import MoviesList from './pages/MoviesList';
 
 setupIonicReact();
 
@@ -66,6 +68,8 @@ const App: React.FC = () => (
             <Redirect to="/tab1" />
           </Route>
           <Route path="/pokemon-list" component={PokemonList} />
+          <Route path="/pokemon/:id" component={PokemonDetails} />
+          <Route path="/movies" component={MoviesList} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
@@ -81,9 +85,14 @@ const App: React.FC = () => (
             <IonLabel>Tab 3</IonLabel>
           </IonTabButton>
           <IonTabButton tab="pokemon-list" href="/pokemon-list">
-            <IonIcon aria-hidden="true" icon={fileTray} />
+          
+            <IonIcon aria-hidden="true" icon={fileTrayStackedSharp} />
             <IonLabel>Pokemon</IonLabel>
           </IonTabButton>
+          <IonTabButton tab="movies" href="/movies"> {/* Ajouter cette ligne */}
+        <IonIcon icon={filmOutline} />
+        <IonLabel>Films</IonLabel>
+      </IonTabButton>
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
