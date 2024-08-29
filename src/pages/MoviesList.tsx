@@ -31,6 +31,7 @@ const MoviesList: React.FC = () => {
   const [page, setPage] = useState<number>(1);
     const history = useHistory();
     const fetchMovies = (searchQuery: string, pageNumber: number) => {
+  
         axios.get(`http://movies-api.julienpoirier-webdev.com/search/movies/${searchQuery}/${pageNumber}`)
           .then(response => {
             setMovies(response.data.results);
@@ -49,8 +50,8 @@ const MoviesList: React.FC = () => {
     history.push(`/movies/${id}`);
   };
   const handleSearch = (e: CustomEvent) => {
-    const query = e.detail.value as string;
-    fetchMovies(query, page);
+   setQuery(e.detail.value as string);
+    fetchMovies(query.toLowerCase(), page);
       //setFilteredMovies(movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase())));
     
   };
@@ -82,7 +83,7 @@ const MoviesList: React.FC = () => {
         <IonToolbar>
           <IonTitle>Liste des Films</IonTitle>
           <IonSearchbar
-            value={searchTerm}
+            value={query}
             onIonInput={handleSearch}
             debounce={0}
             placeholder="Rechercher un film..."
@@ -94,7 +95,7 @@ const MoviesList: React.FC = () => {
           <IonRow>
             {movies.map(movie => (
               <IonCol size="6" key={movie.id}>
-                <IonCard button onClick={() => handleMovieClick(movie.id)}>
+                <IonCard button onClick={() => handleMovieClick( movie.id)}>
                   <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
                   <IonCardHeader>
                     <IonCardTitle>{movie.title}</IonCardTitle>
