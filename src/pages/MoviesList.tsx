@@ -94,12 +94,25 @@ const MoviesList: React.FC = () => {
         <IonGrid>
           <IonRow>
             {movies.map(movie => (
-              <IonCol size="6" key={movie.id}>
+              <IonCol size="4" key={movie.id}>
                 <IonCard button onClick={() => handleMovieClick( movie.id)}>
                   <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-                  <IonCardHeader>
+                  <IonCardHeader >
+
                     <IonCardTitle>{movie.title}</IonCardTitle>
                     <IonCardSubtitle>{movie.overview.substring(0, 100)}...</IonCardSubtitle>
+                    <button 
+  style={{
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    backgroundColor: '#87CEEB' 
+  }} 
+  className="un-button"
+>
+  Détails du film
+</button>
+
                   </IonCardHeader>
                 </IonCard>
               </IonCol>
